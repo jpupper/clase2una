@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #F5F0E1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+canvas {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 1;
+}
+
+/* Panel flotante de controles */
+#controls-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 320px;
+  background: rgba(245, 240, 225, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(26, 26, 26, 0.18);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+#controls-panel.collapsed {
+  transform: translateY(-130%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Header del panel */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+  padding-bottom: 8px;
+}
+
+.panel-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1A1A1A;
+  text-transform: uppercase;
+}
+
+.panel-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.panel-close-btn:hover {
+  background: rgba(26, 26, 26, 0.1);
+  color: #000;
+}
+
+/* Botón flotante para reabrir panel si fue cerrado */
+#toggle-panel-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 90;
+  background: #1A1A1A;
+  color: #F7F4EA;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+  display: none;
+  align-items: center;
+  gap: 6px;
+}
+
+#toggle-panel-btn.visible {
+  display: flex;
+}
+
+#toggle-panel-btn:hover {
+  background: #333333;
+  transform: translateY(-1px);
+}
+
+/* Botones de acción */
+.buttons-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn-action {
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.btn-regenerate {
+  background: #1A1A1A;
+  color: #F7F4EA;
+}
+
+.btn-regenerate:hover {
+  background: #333333;
+}
+
+.btn-regenerate:active {
+  transform: scale(0.97);
+}
+
+.btn-fullscreen {
+  background: #E63946;
+  color: #FFFFFF;
+}
+
+.btn-fullscreen:hover {
+  background: #D92B38;
+}
+
+.btn-fullscreen:active {
+  transform: scale(0.97);
+}
+
+/* Filas de sliders */
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.slider-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.slider-control {
+  width: 100%;
+  accent-color: #E63946;
+  cursor: pointer;
+}
+
+/* Footer / atajos */
+.panel-hints {
+  font-size: 10px;
+  color: #666;
+  text-align: center;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  padding-top: 8px;
+  line-height: 1.4;
+}
